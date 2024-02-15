@@ -1,0 +1,32 @@
+<!--
+<p>product works!</p>
+<div>
+  <img [src]="img" alt="image">
+  <h3>  {{title}} </h3>
+  <p> {{ price }} </p>
+  <button (click)="addToCartHandler()">Add to cart</button>
+</div>
+-->
+<div class="group rounded-lg border">
+  <a [routerLink]="['product', product.id]" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+    <!-- <img [src]="img" [alt]="title" class="h-full w-full object-cover object-center group-hover:opacity-75">  -->
+    <img [src]="product.images[0]" [alt]="product.title" class="h-full w-full object-cover object-center group-hover:opacity-75">
+  </a>
+  <div class="flex flex-col space-y-2 p-4">
+      <h3 class="text-sm text-gray-700">{{ product.title | uppercase | reverse }}</h3>
+      <!-- <h2> {{ 'nico' | reverse }} </h2> -->
+      <p class="text-lg font-medium text-gray-900">{{product.price | currency:'$': 'symbol':'1.0' }}</p>
+      <p class="text-sm font-medium text-gray-500">{{product.creationAt | timeAgo }}</p>
+      <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"
+          (click)="addToCartHandler()">Add to cart</button>
+  </div>
+</div>
+<!-- | uppercase   convierte las letras en mayuscula-->
+<!-- | currency:'$'    convierte lo que tengas en lo que quieras-->
+<!-- product.creationAt | date:'short'         se le pone | date:'short' es para la fecha igual puede quedar solo | date -->
+<!-- En la documentacion de angular puedes buscar pipes y te salen varias opciones y las diferentes, Datepipe-->
+
+<!-- los pipes como son tuberias pueden conectarse entre ellos
+ejeplo: product.title pasa por.... | uppercase y se puede conectar por otra tuberia -->
+
+<!-- leyenda se le pone timeAgo-->
